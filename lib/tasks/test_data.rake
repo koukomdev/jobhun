@@ -7,6 +7,7 @@ namespace :test_data do
     TypeTag.connection.execute("TRUNCATE TABLE type_tags;")
     Salary.connection.execute("TRUNCATE TABLE salaries;")
     Tag.connection.execute("TRUNCATE TABLE tags;")
+    CompanyTag.connection.execute("TRUNCATE TABLE company_tags;")
     Company.connection.execute("TRUNCATE TABLE companies;")
 
     AreaTag.create(name: "23区")
@@ -79,5 +80,14 @@ namespace :test_data do
       type_tag_id: 3,
       salary_id: 4,
     )
+
+    CompanyTag.create(company_id: 1, tag_id: 1)
+    CompanyTag.create(company_id: 1, tag_id: 2)
+    CompanyTag.create(company_id: 1, tag_id: 3)
+    CompanyTag.create(company_id: 2, tag_id: 2)
+    CompanyTag.create(company_id: 2, tag_id: 3)
+    CompanyTag.create(company_id: 2, tag_id: 7)
+    CompanyTag.create(company_id: 3, tag_id: 5)
+    CompanyTag.create(company_id: 3, tag_id: 6)
   end
 end
