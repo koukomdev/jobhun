@@ -108,6 +108,18 @@ namespace :test_data do
       type_tag_id: 2,
       salary_id: 2
     )
+    a = Intern.find(1)
+    a.image = File.open(Rails.root + "lib/assets/interns/niro1.jpeg")
+    a.save
+    a = Intern.find(2)
+    a.image = File.open(Rails.root + "lib/assets/interns/niro2.png")
+    a.save
+    a = Intern.find(3)
+    a.image = File.open(Rails.root + "lib/assets/interns/niro3.jpeg")
+    a.save
+    a = Intern.find(4)
+    a.image = File.open(Rails.root + "lib/assets/interns/niro4.jpeg")
+    a.save
 
     InternTag.create(intern_id: 1, tag_id: 1)
     InternTag.create(intern_id: 1, tag_id: 2)
