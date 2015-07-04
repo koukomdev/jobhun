@@ -2,5 +2,5 @@
 class BusinessTag < ActiveRecord::Base
   attr_accessible *attribute_names
 
-  has_many :companies
+  has_many :interns
 end

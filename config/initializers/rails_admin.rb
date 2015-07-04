@@ -31,4 +31,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # Number of default rows per-page:
+  config.default_items_per_page = 50
+
+  # Exclude specific models (keep the others):
+  # config.excluded_models = ['Admin', 'Payment', 'User', 'Version']
+  config.excluded_models = [
+    InternTag,
+  ]
+
+  # Label methods for model instances:
+  # config.label_methods << :description # Default is [:name, :title]
+  config.label_methods.insert(0, :rails_admin_name)
 end
