@@ -12,6 +12,7 @@ class Intern < ActiveRecord::Base
   has_many :tags, through: :intern_tags
 
   mount_uploader :image, ImageUploader
+  mount_uploader :video, VideoUploader
 
   DEFAULT_LIMIT = 10
 
