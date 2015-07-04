@@ -109,16 +109,20 @@ namespace :test_data do
       salary_id: 2
     )
     a = Intern.find(1)
-    a.image = File.open(Rails.root + "lib/assets/interns/niro1.jpeg")
+    a.image = File.open(Rails.root + "lib/assets/interns/images/niro1.jpeg")
+    a.video = File.open(Rails.root + "lib/assets/interns/videos/sample.mp4")
     a.save
     a = Intern.find(2)
-    a.image = File.open(Rails.root + "lib/assets/interns/niro2.png")
+    a.image = File.open(Rails.root + "lib/assets/interns/images/niro2.png")
+    a.video = File.open(Rails.root + "lib/assets/interns/videos/sample.mp4")
     a.save
     a = Intern.find(3)
-    a.image = File.open(Rails.root + "lib/assets/interns/niro3.jpeg")
+    a.image = File.open(Rails.root + "lib/assets/interns/images/niro3.jpeg")
+    a.video = File.open(Rails.root + "lib/assets/interns/videos/sample.mp4")
     a.save
     a = Intern.find(4)
-    a.image = File.open(Rails.root + "lib/assets/interns/niro4.jpeg")
+    a.image = File.open(Rails.root + "lib/assets/interns/images/niro4.jpeg")
+    a.video = File.open(Rails.root + "lib/assets/interns/videos/sample.mp4")
     a.save
 
     InternTag.create(intern_id: 1, tag_id: 1)
