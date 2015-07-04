@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704065500) do
+ActiveRecord::Schema.define(version: 20150704083301) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",               limit: 255, default: "", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150704065500) do
     t.integer  "salary_id",       limit: 4,     default: 0,  null: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.string   "image",           limit: 255
   end
 
   create_table "salaries", force: :cascade do |t|

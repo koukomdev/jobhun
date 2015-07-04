@@ -10,4 +10,6 @@ class Intern < ActiveRecord::Base
 
   has_many :intern_tags, :inverse_of => :intern
   has_many :tags, through: :intern_tags
+
+  mount_uploader :image, ImageUploader
 end
