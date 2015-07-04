@@ -7,7 +7,8 @@ namespace :test_data do
     TypeTag.connection.execute("TRUNCATE TABLE type_tags;")
     Salary.connection.execute("TRUNCATE TABLE salaries;")
     Tag.connection.execute("TRUNCATE TABLE tags;")
-    CompanyTag.connection.execute("TRUNCATE TABLE company_tags;")
+    Intern.connection.execute("TRUNCATE TABLE interns;")
+    InternTag.connection.execute("TRUNCATE TABLE intern_tags;")
     Company.connection.execute("TRUNCATE TABLE companies;")
 
     AreaTag.create(name: "23区")
@@ -32,6 +33,7 @@ namespace :test_data do
     TypeTag.create(name: "ディレクター")
     TypeTag.create(name: "エンジニア")
     TypeTag.create(name: "経理")
+    TypeTag.create(name: "マネージャー候補")
 
     Salary.create(show_text: "無給", salary: 0)
     Salary.create(show_text: "500円〜", salary: 500)
@@ -51,43 +53,71 @@ namespace :test_data do
       name: "都会株式会社",
       kana: "トカイカブシキカイシャ",
       status: 1,
-      overview: "クリエイティブに働きます。",
-      corporate_culture: "都会にある",
-      area_tag_id: 1,
-      business_tag_id: 1,
-      type_tag_id: 1,
-      salary_id: 3
+      corporate_culture: "都会にある"
     )
     Company.create(
       name: "Team Kyoto",
       kana: "チームキョウト",
       status: 1,
-      overview: "京都を建築で元気にする仕事。",
-      corporate_culture: "熱い",
-      area_tag_id: 5,
-      business_tag_id: 4,
-      type_tag_id: 4,
-      salary_id: 4
+      corporate_culture: "熱い"
     )
     Company.create(
       name: "名古屋商業",
       kana: "ナゴヤショウギョウ",
       status: 1,
-      overview: "名古屋に関わることならなんでもやっていく。",
-      corporate_culture: "名古屋愛",
-      area_tag_id: 7,
-      business_tag_id: 6,
-      type_tag_id: 3,
-      salary_id: 4,
+      corporate_culture: "名古屋愛"
     )
 
-    CompanyTag.create(company_id: 1, tag_id: 1)
-    CompanyTag.create(company_id: 1, tag_id: 2)
-    CompanyTag.create(company_id: 1, tag_id: 3)
-    CompanyTag.create(company_id: 2, tag_id: 2)
-    CompanyTag.create(company_id: 2, tag_id: 3)
-    CompanyTag.create(company_id: 2, tag_id: 7)
-    CompanyTag.create(company_id: 3, tag_id: 5)
-    CompanyTag.create(company_id: 3, tag_id: 6)
+    Intern.create(
+      title: "スーパー運営を疑似体験！",
+      status: 1,
+      overview: "普段使ってるあのスーパーを運営しましょう",
+      company_id: 1,
+      area_tag_id: 1,
+      business_tag_id: 5,
+      type_tag_id: 6,
+      salary_id: 3
+    )
+    Intern.create(
+      title: "webサービスデザイン",
+      status: 1,
+      overview: "いま注目のあのサービスをデザインしませんか？",
+      company_id: 2,
+      area_tag_id: 5,
+      business_tag_id: 1,
+      type_tag_id: 1,
+      salary_id: 4
+    )
+    Intern.create(
+      title: "webサービス開発",
+      status: 1,
+      overview: "いま注目のあのサービスを開発しませんか？？",
+      company_id: 2,
+      area_tag_id: 5,
+      business_tag_id: 1,
+      type_tag_id: 4,
+      salary_id: 5
+    )
+    Intern.create(
+      title: "新エネルギー開発にジョインしませんか！？",
+      status: 1,
+      overview: "枯渇していく石油に代わる新エネルギーを産み出しましょう。",
+      company_id: 3,
+      area_tag_id: 7,
+      business_tag_id: 6,
+      type_tag_id: 2,
+      salary_id: 2
+    )
+
+    InternTag.create(intern_id: 1, tag_id: 1)
+    InternTag.create(intern_id: 1, tag_id: 2)
+    InternTag.create(intern_id: 1, tag_id: 3)
+    InternTag.create(intern_id: 2, tag_id: 2)
+    InternTag.create(intern_id: 2, tag_id: 3)
+    InternTag.create(intern_id: 2, tag_id: 7)
+    InternTag.create(intern_id: 3, tag_id: 5)
+    InternTag.create(intern_id: 3, tag_id: 6)
+    InternTag.create(intern_id: 4, tag_id: 5)
+    InternTag.create(intern_id: 4, tag_id: 6)
   end
 end

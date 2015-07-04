@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150704065500) do
   add_index "intern_tags", ["intern_id", "tag_id"], name: "intern_id_tag_id_unique_idx", unique: true, using: :btree
 
   create_table "interns", force: :cascade do |t|
-    t.string   "tile",            limit: 255,   default: "", null: false
+    t.string   "title",           limit: 255,   default: "", null: false
     t.integer  "status",          limit: 1,     default: 0,  null: false
     t.text     "overview",        limit: 65535,              null: false
     t.integer  "company_id",      limit: 4,     default: 0,  null: false
