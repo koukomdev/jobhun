@@ -1,6 +1,6 @@
 # encoding: utf-8
 class AreaTag < ActiveRecord::Base
-  attr_accessible :name, :updated_at
+  attr_accessible *attribute_names
 
   has_many :companies
 end

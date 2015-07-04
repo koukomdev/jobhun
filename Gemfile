@@ -82,3 +82,6 @@ gem 'yajl-ruby', github: 'brianmario/yajl-ruby'
 gem 'slim'
 gem 'slim-rails'
 gem 'less-rails'
+
+gem 'devise'
+gem 'rails_admin'

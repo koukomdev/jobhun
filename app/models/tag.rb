@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Tag < ActiveRecord::Base
-  attr_accessible :name, :updated_at
+  attr_accessible *attribute_names
 
-  has_many :company_tags
-  has_many :companies, through: :company_tags
+  has_many :intern_tags
+  has_many :interns, through: :intern_tags
 end

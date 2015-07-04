@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613173247) do
+ActiveRecord::Schema.define(version: 20150704065500) do
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",               limit: 255, default: "", null: false
+    t.string   "encrypted_password",  limit: 255, default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",  limit: 255
+    t.string   "last_sign_in_ip",     limit: 255
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
 
   create_table "area_tags", force: :cascade do |t|
     t.string   "name",       limit: 255, default: "", null: false
@@ -29,31 +44,32 @@ ActiveRecord::Schema.define(version: 20150613173247) do
     t.string   "name",              limit: 255,   default: "", null: false
     t.string   "kana",              limit: 255,   default: "", null: false
     t.integer  "status",            limit: 1,     default: 0,  null: false
-    t.text     "overview",          limit: 65535,              null: false
     t.text     "corporate_culture", limit: 65535,              null: false
-    t.integer  "area_tag_id",       limit: 1,     default: 0,  null: false
-    t.integer  "business_tag_id",   limit: 1,     default: 0,  null: false
-    t.integer  "type_tag_id",       limit: 1,     default: 0,  null: false
-    t.integer  "salary_id",         limit: 1,     default: 0,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "companies", ["area_tag_id"], name: "area_tag_id_idx", using: :btree
-  add_index "companies", ["business_tag_id"], name: "business_tag_id_idx", using: :btree
-  add_index "companies", ["name", "status"], name: "name_and_status_idx", using: :btree
-  add_index "companies", ["salary_id"], name: "salary_id_idx", using: :btree
-  add_index "companies", ["status", "created_at"], name: "status_and_created_at_idx", using: :btree
-  add_index "companies", ["type_tag_id"], name: "type_tag_id_idx", using: :btree
-
-  create_table "company_tags", id: false, force: :cascade do |t|
+  create_table "intern_tags", id: false, force: :cascade do |t|
     t.integer  "tag_id",     limit: 4, default: 0, null: false
-    t.integer  "company_id", limit: 4, default: 0, null: false
+    t.integer  "intern_id",  limit: 4, default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "company_tags", ["company_id", "tag_id"], name: "company_id_tag_id_unique_idx", unique: true, using: :btree
+  add_index "intern_tags", ["intern_id", "tag_id"], name: "intern_id_tag_id_unique_idx", unique: true, using: :btree
+
+  create_table "interns", force: :cascade do |t|
+    t.string   "tile",            limit: 255,   default: "", null: false
+    t.integer  "status",          limit: 1,     default: 0,  null: false
+    t.text     "overview",        limit: 65535,              null: false
+    t.integer  "company_id",      limit: 4,     default: 0,  null: false
+    t.integer  "area_tag_id",     limit: 4,     default: 0,  null: false
+    t.integer  "business_tag_id", limit: 4,     default: 0,  null: false
+    t.integer  "type_tag_id",     limit: 4,     default: 0,  null: false
+    t.integer  "salary_id",       limit: 4,     default: 0,  null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
 
   create_table "salaries", force: :cascade do |t|
     t.string   "show_text",  limit: 255, default: "", null: false

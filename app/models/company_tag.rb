@@ -1,7 +1,7 @@
 # encoding: utf-8
-class CompanyTag < ActiveRecord::Base
-  attr_accessible :company, :company_id, :tag, :tag_id, :updated_at
+class InternTag < ActiveRecord::Base
+  attr_accessible *attribute_names
 
   belongs_to :tag
-  belongs_to :company, :inverse_of => :company_tags
+  belongs_to :intern, :inverse_of => :intern_tags
 end
