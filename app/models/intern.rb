@@ -1,5 +1,6 @@
 class Intern < ActiveRecord::Base
   attr_accessible *attribute_names
+  attr_accessible :intern_tags_attributes
 
   belongs_to :company
   belongs_to :area_tag
@@ -8,5 +9,5 @@ class Intern < ActiveRecord::Base
   belongs_to :salary
 
   has_many :intern_tags, :inverse_of => :intern
-  has_many :tags, through: :company_tags
+  has_many :tags, through: :intern_tags
 end
