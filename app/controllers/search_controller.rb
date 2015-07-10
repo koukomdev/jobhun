@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       :business_tag,
       :type_tag,
       :salary_tag,
-      :tags,
+      {:tags => []},
       :limit,
       :offset
     )
