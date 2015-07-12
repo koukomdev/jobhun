@@ -46,4 +46,12 @@ class Intern < ActiveRecord::Base
 
     result
   end
+
+  def image_url
+    Settings.base_url + self.image.url if self.image?
+  end
+
+  def video_url
+    Settings.base_url + self.video.url if self.video?
+  end
 end

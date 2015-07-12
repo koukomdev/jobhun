@@ -1,4 +1,4 @@
-class TagController < ApplicationController
+class TagsController < ApplicationController
   # todo: tagは会社側上位 5 件
   TAG_LIMIT = 5
   def index
