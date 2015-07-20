@@ -44,4 +44,9 @@ RailsAdmin.config do |config|
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
   config.label_methods.insert(0, :rails_admin_name)
+
+
+  config.model 'InternTag' do
+    visible false
+  end
 end

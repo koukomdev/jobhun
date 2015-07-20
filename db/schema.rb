@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704112159) do
+ActiveRecord::Schema.define(version: 20150719105627) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",               limit: 255, default: "", null: false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20150704112159) do
     t.datetime "updated_at"
   end
 
+  create_table "intern_schedules", force: :cascade do |t|
+    t.integer  "intern_id",  limit: 4, default: 0, null: false
+    t.datetime "from",                             null: false
+    t.datetime "to"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "intern_tags", id: false, force: :cascade do |t|
     t.integer  "tag_id",     limit: 4, default: 0, null: false
     t.integer  "intern_id",  limit: 4, default: 0, null: false
@@ -58,19 +66,34 @@ ActiveRecord::Schema.define(version: 20150704112159) do
 
   add_index "intern_tags", ["intern_id", "tag_id"], name: "intern_id_tag_id_unique_idx", unique: true, using: :btree
 
+  create_table "intern_thumbnails", force: :cascade do |t|
+    t.integer  "intern_id",   limit: 4,   default: 0, null: false
+    t.string   "image",       limit: 255,             null: false
+    t.string   "description", limit: 128,             null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "interns", force: :cascade do |t|
-    t.string   "title",           limit: 255,   default: "", null: false
-    t.integer  "status",          limit: 1,     default: 0,  null: false
-    t.text     "overview",        limit: 65535,              null: false
-    t.integer  "company_id",      limit: 4,     default: 0,  null: false
-    t.integer  "area_tag_id",     limit: 4,     default: 0,  null: false
-    t.integer  "business_tag_id", limit: 4,     default: 0,  null: false
-    t.integer  "type_tag_id",     limit: 4,     default: 0,  null: false
-    t.integer  "salary_id",       limit: 4,     default: 0,  null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.string   "image",           limit: 255
-    t.string   "video",           limit: 255
+    t.string   "title",              limit: 255,   default: "", null: false
+    t.integer  "status",             limit: 1,     default: 0,  null: false
+    t.text     "required_condition", limit: 65535,              null: false
+    t.string   "location",           limit: 255,                null: false
+    t.datetime "publishing_start",                              null: false
+    t.datetime "publishing_end",                                null: false
+    t.text     "wages",              limit: 65535,              null: false
+    t.string   "positions",          limit: 255,                null: false
+    t.text     "description",        limit: 65535,              null: false
+    t.text     "ideal_candidate",    limit: 65535,              null: false
+    t.integer  "company_id",         limit: 4,     default: 0,  null: false
+    t.integer  "area_tag_id",        limit: 4,     default: 0,  null: false
+    t.integer  "business_tag_id",    limit: 4,     default: 0,  null: false
+    t.integer  "type_tag_id",        limit: 4,     default: 0,  null: false
+    t.integer  "salary_id",          limit: 4,     default: 0,  null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.string   "image",              limit: 255
+    t.string   "video",              limit: 255
   end
 
   create_table "salaries", force: :cascade do |t|

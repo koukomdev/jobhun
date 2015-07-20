@@ -1,6 +1,8 @@
 class Intern < ActiveRecord::Base
   attr_accessible *attribute_names
   attr_accessible :tag_ids, :intern_tags_attributes
+  attr_accessible :intern_thumbnails, :intern_thumbnails_attributes
+  attr_accessible :intern_schedules, :intern_schedules_attributes
 
   belongs_to :company
   belongs_to :area_tag
@@ -10,6 +12,9 @@ class Intern < ActiveRecord::Base
 
   has_many :intern_tags, :inverse_of => :intern
   has_many :tags, through: :intern_tags
+
+  has_many :intern_thumbnails
+  has_many :intern_schedules
 
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
